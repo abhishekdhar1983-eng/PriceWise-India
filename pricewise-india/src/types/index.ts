@@ -1,0 +1,9 @@
+export type CategoryId='groceries'|'electronics'|'fashion'|'beauty'|'appliances'|'furniture'|'baby'|'sports'|'books'|'other';
+export interface Category{id:CategoryId;name:string}
+export interface Retailer{id:string;name:string;deliveryFee:number|null;freeDeliveryAbove:number|null;handlingFee:number|null;eta:string}
+export interface Product{id:string;title:string;brand:string;category:CategoryId;variant:string;packSize:string;isGrocery:boolean}
+export interface Offer{productId:string;retailerId:string;price:number;mrp:number;deliveryFee:number|null;handlingFee:number|null;eligibleDiscount:number;inStock:boolean;eta:string;observedAt:string}
+export interface PricedOffer{offer:Offer;discountAmount:number;discountPct:number;feesUnknown:boolean;estimatedTotal:number}
+export interface Catalog{products:Product[];offers:Offer[];retailers:Retailer[]}
+export interface BasketLine{product:Product;qty:number}
+export interface BasketQuote{retailer:Retailer;subtotal:number;deliveryFee:number|null;handlingFee:number|null;total:number;feesUnknown:boolean;missing:Product[];complete:boolean}
